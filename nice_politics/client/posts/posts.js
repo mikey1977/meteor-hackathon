@@ -9,8 +9,12 @@
 Template.posts.helpers({
   like : function() {
     return 1;
+  },
+  allPosts : function() {
+    return Posts.find();
   }
 })
+
 
 // Template.posts.helpers({
 //   dislike : function() {

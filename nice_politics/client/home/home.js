@@ -7,15 +7,15 @@ Template.home.rendered = function() {
 }
 
 //place newest posts at top
-Template.home.posts = function() {
+Template.posts.posts = function() {
   return Posts.find({}, {sort: {date: -1 }});
 }
 
-Template.home.events({
+Template.posts.events({
   'keyup .posttext': function(evt, tmpl) {
     // if return key is pressed in post block
     if(evt.which === 13) {
-      var posttext = tmpl.find('.posttext').val();
+      var posttext = tmpl.find('.posttext').value;
       var options = {text:posttext, parent : null };
 
       // addPost on server.js
@@ -37,30 +37,18 @@ Template.home.events({
 //   }
 // })
 
-Meteor.methods({
 
-  addPost:function(options) {
-    var post = {
-      text:options.text,
-      user:Meteor.userId(),
-      date:new Date(),
-      parent:options.parent
-    };
-    Posts.insert(post);
-    console.log(post);
+
+Template.postcomment.events({
+  'submit form' : function(event) {
+    event.preventDefault();
+    var userComment = $('[name="userComment"]').val();
+    Posts.insert({
+      name : userComment
+    });
+    $('[name="userComment"]').val('');
   }
 });
-
-// Template.addComments.events({
-//   'submit form' : function(event) {
-//     event.preventDefault();
-//     var userComment = $('[name="userComment"]').val();
-//     Posts.insert({
-//       name : userComment
-//     });
-//     $('[name="userComment"]').val('');
-//   }
-// });
 
 Template.login.events({
   'submit form': function(event) {
@@ -89,6 +77,21 @@ Template.posts.events({
     event.preventDefault();
     Meteor.logout();
     Router.go('/loginPage');
+  }
+});
+
+// Template.button.events({
+//   'click .pacify' : function() {
+//   event.preventDefault();
+//   document.body.background = ""
+//   }
+// });
+
+Template.button.events({
+  'click .deletePosts' : function(events) {
+    event.preventDefault();
+    var documentId = this._id;
+    Posts.remove({ _id : documentId });
   }
 });
 

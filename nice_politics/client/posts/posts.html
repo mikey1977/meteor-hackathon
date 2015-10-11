@@ -3,7 +3,7 @@
     <p><a href="#" class="logout">Logout</a></p>
     <div class="well well-large">
       <label for="posttext">Update</label>
-      <input class="input-xxlarge posttext" type="text" name="posttext" value="Comment Here" id="posttext">
+      <input placeholder="Comment Here" class="input-xxlarge posttext" type="text" name="posttext" value="" id="posttext">
     </div>
 
     <a class="pull-left" href="#">
@@ -11,7 +11,16 @@
     </a>
     <div class="media-body">
       <h4> {{_id}} </h4>
-      <p> {{text}} </p>
+      <ul>
+        {{#each allPosts}}
+          <li class="commenterPosts">
+            <p>{{text}}</p><span class="aww"></span>
+            <p>{{date}}</p>
+            <p>{{> button}}</p>
+
+          </li>
+        {{/each}}
+      </ul>
       <h4 class="media-heading"></h4>
 
       <!-- bootstrap badge -->
@@ -49,4 +58,9 @@
     <p class="commenter"> Commenter </p>
     <p class="commentText"> {{>addPost}} </p>
   </li>
+</template>
+
+<template name="button">
+  <button class="pacify">Pacify</button>
+  <button class="deletePosts">Delete</button>
 </template>
