@@ -4,7 +4,8 @@
   <title>nice_politics</title>
 </head>
 
-<body>
+<template name="layout">
+
   <!-- include navigation from navigation.html -->
   {{> navigation}}
   <div class="container">
@@ -21,11 +22,13 @@
       <div class="span9">
         <!-- {{>home}} -->
         <!-- {{>posts}} -->
-        {{renderPage}}
+        {{>yield}}
 
       </div>
     </div>
   </div>
-</body>
+</template>
+
+
 
 

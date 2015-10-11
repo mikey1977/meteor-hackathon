@@ -2,26 +2,54 @@ Template.home.rendered = function() {
   Deps.autorun( function() {
     Meteor.subscribe("posts", Meteor.userId());
     Meteor.subscribe("like");
-    Meteor.subscribe("dislike");
+    // Meteor.subscribe("dislike");
   })
 }
 
 //place newest posts at top
-Template.home.postings = function() {
+Template.home.posts = function() {
   return Posts.find({}, {sort: {date: -1 }});
 }
 
 Template.home.events({
-  'keyup .postings': function(evt, tmpl) {
+  'keyup .posttext': function(evt, tmpl) {
     // if return key is pressed in post block
     if(evt.which === 13) {
-      var postings = tmpl.find('.postings').value;
-      var options = {text:postings, parent : null };
+      var posttext = tmpl.find('.posttext').value;
+      var options = {text:posttext, parent : null };
+
+      // addPost on server.js
       Meteor.call('addPost', options);
-      $('.postings').val('').select().focus();
+
+      //trigger clear field after pressing enter
+      $('.posttext').val('').select().focus();
     }
   }
-})
+});
+
+Meteor.methods({
+
+  addPost:function(options) {
+    var post = {
+      text:options.text,
+      user:Meteor.userId(),
+      date:new Date(),
+      parent:options.parent
+    };
+    Postsinsert(post);
+  }
+});
+
+// Template.addComments.events({
+//   'submit form' : function(event) {
+//     event.preventDefault();
+//     var userComment = $('[name="userComment"]').val();
+//     Posts.insert({
+//       name : userComment
+//     });
+//     $('[name="userComment"]').val('');
+//   }
+// });
 
 Template.login.events({
   'submit form': function(event) {
@@ -29,7 +57,7 @@ Template.login.events({
     var emailVar = event.target.loginEmail.value;
     var passwordVar = event.target.loginPassword.value;
     Meteor.loginWithPassword(emailVar, passwordVar);
-    Router.go('/home');
+    Router.go('/posts');
   }
 });
 
@@ -45,7 +73,7 @@ Template.register.events({
   }
 });
 
-Template.home.events({
+Template.posts.events({
   'click .logout': function(event){
     event.preventDefault();
     Meteor.logout();
@@ -56,18 +84,11 @@ Template.login.events({
   'click .logout': function(event){
     event.preventDefault();
     Meteor.logout();
-    Router.go('/');
+    Router.go('/loginPage');
   }
 });
 
 
-// Template.addComments.events({
-//   'submit form' : function(event) {
-//     event.preventDefault();
-//     var userComment = $('[name="userComment"]').val();
-//     Posts.insert({
-//       name : userComment
-//     });
-//     $('[name="userComment"]').val('');
-//   }
-// });
+
+
+

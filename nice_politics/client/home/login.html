@@ -1,4 +1,4 @@
-<template name="login">
+<template name="loginPage">
   {{#if currentUser}}
     <p>{{currentUser}}</p>
     <p><button class="logout" value="Logout"></button></p>
@@ -6,4 +6,20 @@
     {{> register }}
     {{> login}}
   {{/if}}
+</template>
+
+<template name="register">
+    <form>
+        <input type="email" name="registerEmail">
+        <input type="password" name="registerPassword">
+        <input type="submit" value="Register">
+    </form>
+</template>
+
+<template name="login">
+    <form>
+        <input type="email" name="loginEmail">
+        <input type="password" name="loginPassword">
+        <input type="submit" value="Login">
+    </form>
 </template>

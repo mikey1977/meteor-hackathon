@@ -1,7 +1,11 @@
 <template name="posts">
   <div class="media">
+    <div class="well well-large">
+      <label for="posttext">Update</label>
+      <input class="input-xxlarge posttext" type="text" name="posttext" value="Comment Here" id="posttext">
+    </div>
     <a class="pull-left" href="#">
-      <img src="/{{user}}" class="media-object" data-src="holder.js/64x64">
+      <img src="https://upload.wikimedia.org/wikipedia/en/e/e3/DemocraticLogo.png" width="40px" class="media-object" data-src="holder.js/64x64">
     </a>
     <div class="media-body">
       <h4> User </h4>
@@ -14,10 +18,10 @@
           <h4 class="media-heading">
             <a class="likeButton">Yea</a>
           </h4>
-        <span class="badge badge-success">{{dislike}}</span> Dislikes
+<!--         <span class="badge badge-success">{{dislike}}</span> Dislikes
           <h4 class="media-heading">
             <a class="likeButton">Nay</a>
-          </h4>
+          </h4> -->
           <ul>
             {{>postcomment}}
           </ul>
@@ -29,10 +33,8 @@
 <!-- commenting on user comments -->
 <template name="postcomment">
   <li class="well">
-
-    <!-- image linked to user -->
     <a class="pull-left" href="/user">
-      <img src="/{{owner}}.png" width="30px" class="img-rounded" alt="#" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/2000px-Republicanlogo.svg.png" width="30px" class="img-rounded" alt="#" />
     </a>
     <p class="commenter"> Commenter </p>
     <p class="commentText"> Text </p>
