@@ -1,0 +1,6 @@
+/*scroll if exceeding 80% vertical height*/
+#postingsList {
+  height: 80vh;
+  overflow-y:scroll;
+  overflow-x:hidden;
+}

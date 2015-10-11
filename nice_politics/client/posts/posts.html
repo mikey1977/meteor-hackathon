@@ -1,0 +1,40 @@
+<template name="posts">
+  <div class="media">
+    <a class="pull-left" href="#">
+      <img src="/{{user}}" class="media-object" data-src="holder.js/64x64">
+    </a>
+    <div class="media-body">
+      <h4> User </h4>
+      <p> User comments </p>
+      <h4 class="media-heading"></h4>
+
+      <!-- bootstrap badge -->
+      <div class="media">
+        <span class="badge badge-success">{{like}}</span> Likes
+          <h4 class="media-heading">
+            <a class="likeButton">Yea</a>
+          </h4>
+        <span class="badge badge-success">{{dislike}}</span> Dislikes
+          <h4 class="media-heading">
+            <a class="likeButton">Nay</a>
+          </h4>
+          <ul>
+            {{>postcomment}}
+          </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- commenting on user comments -->
+<template name="postcomment">
+  <li class="well">
+
+    <!-- image linked to user -->
+    <a class="pull-left" href="/user">
+      <img src="/{{owner}}.png" width="30px" class="img-rounded" alt="#" />
+    </a>
+    <p class="commenter"> Commenter </p>
+    <p class="commentText"> Text </p>
+  </li>
+</template>

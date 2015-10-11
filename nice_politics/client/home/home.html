@@ -1,0 +1,27 @@
+<template name="home">
+    <p><a href="#" class="logout">Logout</a></p>
+    <!-- {{> addComments}} -->
+
+  <!-- comment bar -->
+  <!-- bootstrap well class rounded border -->
+  <div class="well well-large">
+    <label for="posttext">Update</label>
+    <input class="input-xxlarge posttext" type="text" name="posttext" value="Comment Here" id="posttext">
+  </div>
+
+  <!-- posts appearing under comment bar -->
+  <ul id="postingsList">
+    {{>posts}}
+<!--     {{>posts}} -->
+  </ul>
+</template>
+
+
+
+<!-- <template name="addComments">
+  <form>
+    <p>Add comment</p>
+      <input type="text" placeholder="Enter new topic">
+      <button id="submit">Enter</button>
+  </form>
+</template> -->

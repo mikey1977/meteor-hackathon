@@ -1,0 +1,31 @@
+<!-- main page -->
+
+<head>
+  <title>nice_politics</title>
+</head>
+
+<body>
+  <!-- include navigation from navigation.html -->
+  {{> navigation}}
+  <div class="container">
+    <div class="row">
+      {{#if currentUser}}
+
+      <!-- sidebar template -->
+      <div class="span3">
+        {{>sidebar}}
+      </div>
+      {{/if}}
+
+      <!-- home template -->
+      <div class="span9">
+        <!-- {{>home}} -->
+        <!-- {{>posts}} -->
+        {{renderPage}}
+
+      </div>
+    </div>
+  </div>
+</body>
+
+
