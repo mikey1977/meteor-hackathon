@@ -7,9 +7,10 @@ Template.home.rendered = function() {
 }
 
 //place newest posts at top
-Template.posts.posts = function() {
+Template.posts.post = function() {
   return Posts.find({}, {sort: {date: -1 }});
 }
+
 
 Template.posts.events({
   'keyup .posttext': function(evt, tmpl) {
@@ -26,18 +27,6 @@ Template.posts.events({
     }
   }
 });
-
-// Template.addPost.events({
-//   'submit form' : function(event) {
-//     var post = {
-//       text:event.text,
-//       parent:event.parent
-//     }
-//     Posts.insert(post);
-//   }
-// })
-
-
 
 Template.postcomment.events({
   'submit form' : function(event) {
@@ -80,13 +69,6 @@ Template.posts.events({
   }
 });
 
-// Template.button.events({
-//   'click .pacify' : function() {
-//   event.preventDefault();
-//   document.body.background = ""
-//   }
-// });
-
 Template.button.events({
   'click .deletePosts' : function(events) {
     event.preventDefault();
@@ -95,15 +77,11 @@ Template.button.events({
   }
 });
 
-// Template.login.events({
-//   'click .logout': function(event){
-//     event.preventDefault();
-//     Meteor.logout();
-//     Router.go('/loginPage');
-//   }
-// });
-
-
-
-
-
+Template.button.events({
+  'click .pacify' : function(events) {
+    event.preventDefault();
+    var documentId = this._id;
+    Posts.remove({ _id : documentId });
+    document.body.background = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSKPYH2zhQeEx_GWPHhPl65Ji-FmjxnALXafVgczmpktVd4ot79_Q"
+  }
+});

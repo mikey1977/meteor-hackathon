@@ -1,30 +1,3 @@
-<!-- <template name="home">
-    <p><a href="#" class="logout">Logout</a></p> -->
-    <!-- {{> addComments}} -->
-
-  <!-- comment bar -->
-  <!-- bootstrap well class rounded border -->
-<!--   <div class="well well-large">
-    <label for="posttext">Update</label>
-    <input class="input-xxlarge posttext" type="text" name="posttext" value="Comment Here" id="posttext">
-  </div>
- -->
-  <!-- posts appearing under comment bar -->
-  <!-- <ul id="postingsList"> -->
-    <!-- {{>posts}} -->
-
-<!--   </ul>
-</template> -->
-
-
-
-<!-- <template name="addComments">
-  <form>
-    <p>Add comment</p>
-      <input type="text" placeholder="Enter new topic">
-      <button id="submit">Enter</button>
-  </form>
-</template> -->
 
 <template name="home">
   <div class="media">
@@ -34,27 +7,19 @@
       <input placeholder="Comment here" class="input-xxlarge posttext" type="text" name="posttext" value="" id="posttext">
     </div>
     <ul id="postList" class="unstyled">
+      <!-- {{#each posts}} -->
       {{>post}}
+
     </ul>
 
     <a class="pull-left" href="#">
       <img src="https://upload.wikimedia.org/wikipedia/en/e/e3/DemocraticLogo.png" width="40px" class="media-object" data-src="holder.js/64x64">
     </a>
     <div class="media-body">
-      <h4> {{> user}} </h4>
       <p> User comments </p>
       <h4 class="media-heading"></h4>
 
-      <!-- bootstrap badge -->
       <div class="media">
-        <span class="badge badge-success">{{like}}</span> Likes
-          <h4 class="media-heading">
-            <a class="likeButton">Yea</a>
-          </h4>
-<!--         <span class="badge badge-success">{{dislike}}</span> Dislikes
-          <h4 class="media-heading">
-            <a class="likeButton">Nay</a>
-          </h4> -->
           <ul>
             {{>postcomment}}
           </ul>

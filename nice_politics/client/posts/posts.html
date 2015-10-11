@@ -25,16 +25,9 @@
 
       <!-- bootstrap badge -->
       <div class="media">
-        <span class="badge badge-success">{{like}}</span> Likes
-          <h4 class="media-heading">
-            <a class="likeButton">Yea</a>
-          </h4>
-<!--         <span class="badge badge-success">{{dislike}}</span> Dislikes
-          <h4 class="media-heading">
-            <a class="likeButton">Nay</a>
-          </h4> -->
+
           <ul>
-            {{>postcomment}}
+            {{> postcomment}}
           </ul>
       </div>
     </div>
@@ -56,7 +49,7 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/2000px-Republicanlogo.svg.png" width="30px" class="img-rounded" alt="#" />
     </a>
     <p class="commenter"> Commenter </p>
-    <p class="commentText"> {{>addPost}} </p>
+    <p class="commentText"> {{> addPost}} </p>
   </li>
 </template>
 
