@@ -1,15 +1,17 @@
 <template name="posts">
   <div class="media">
+    <p><a href="#" class="logout">Logout</a></p>
     <div class="well well-large">
       <label for="posttext">Update</label>
       <input class="input-xxlarge posttext" type="text" name="posttext" value="Comment Here" id="posttext">
     </div>
+
     <a class="pull-left" href="#">
       <img src="https://upload.wikimedia.org/wikipedia/en/e/e3/DemocraticLogo.png" width="40px" class="media-object" data-src="holder.js/64x64">
     </a>
     <div class="media-body">
-      <h4> User </h4>
-      <p> User comments </p>
+      <h4> {{_id}} </h4>
+      <p> {{text}} </p>
       <h4 class="media-heading"></h4>
 
       <!-- bootstrap badge -->
@@ -30,6 +32,14 @@
   </div>
 </template>
 
+<!-- start main comment -->
+<template name="addPost">
+  <form>
+    <input type="text" placeholder="Enter comment" name="addPost">
+  </form>
+</template>
+
+
 <!-- commenting on user comments -->
 <template name="postcomment">
   <li class="well">
@@ -37,6 +47,6 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/2000px-Republicanlogo.svg.png" width="30px" class="img-rounded" alt="#" />
     </a>
     <p class="commenter"> Commenter </p>
-    <p class="commentText"> Text </p>
+    <p class="commentText"> {{>addPost}} </p>
   </li>
 </template>

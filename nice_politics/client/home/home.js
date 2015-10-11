@@ -15,7 +15,7 @@ Template.home.events({
   'keyup .posttext': function(evt, tmpl) {
     // if return key is pressed in post block
     if(evt.which === 13) {
-      var posttext = tmpl.find('.posttext').value;
+      var posttext = tmpl.find('.posttext').val();
       var options = {text:posttext, parent : null };
 
       // addPost on server.js
@@ -27,6 +27,16 @@ Template.home.events({
   }
 });
 
+// Template.addPost.events({
+//   'submit form' : function(event) {
+//     var post = {
+//       text:event.text,
+//       parent:event.parent
+//     }
+//     Posts.insert(post);
+//   }
+// })
+
 Meteor.methods({
 
   addPost:function(options) {
@@ -36,7 +46,8 @@ Meteor.methods({
       date:new Date(),
       parent:options.parent
     };
-    Postsinsert(post);
+    Posts.insert(post);
+    console.log(post);
   }
 });
 
@@ -77,16 +88,17 @@ Template.posts.events({
   'click .logout': function(event){
     event.preventDefault();
     Meteor.logout();
-  }
-});
-
-Template.login.events({
-  'click .logout': function(event){
-    event.preventDefault();
-    Meteor.logout();
     Router.go('/loginPage');
   }
 });
+
+// Template.login.events({
+//   'click .logout': function(event){
+//     event.preventDefault();
+//     Meteor.logout();
+//     Router.go('/loginPage');
+//   }
+// });
 
 
 
