@@ -7,8 +7,9 @@
       <input placeholder="Comment here" class="input-xxlarge posttext" type="text" name="posttext" value="" id="posttext">
     </div>
     <ul id="postList" class="unstyled">
-      <!-- {{#each posts}} -->
+      {{#each posts}}
       {{>post}}
+      {{/each}}
 
     </ul>
 

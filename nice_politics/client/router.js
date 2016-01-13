@@ -3,7 +3,7 @@ Router.configure({
 });
 
 Router.route('/', function() {
-  this.render('layout');
+  this.render('loginPage');
 })
 
 Router.route('/home', function() {
